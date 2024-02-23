@@ -1,12 +1,21 @@
-import React from 'react';
-import './App.css';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold">
-      Pocket
-    </h1>
-  );  
+    <>
+      <div>
+        <h1>Pocket</h1>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
