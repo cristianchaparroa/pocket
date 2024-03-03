@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode className="bg-blue-700">
+  <React.StrictMode>
     <App />
   </React.StrictMode>,
 )
