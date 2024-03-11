@@ -10,43 +10,43 @@ const Simulator = () => {
                 <p className=" text-cyan-500">$1000</p>
             </div>
 
-            <div class="relative ml-5 mr-5" >
-                <label for="labels-range-input" class="sr-only">Labels range</label>
+            <div className="relative ml-5 mr-5" >
+                <label htmlFor="labels-range-input" className="sr-only">Labels range</label>
 
                 <input
                     id="labels-range-input"
                     type="range"
                     min="100" 
                     max="1500"
-                    class="w-full 
+                    className="w-full 
                         h-2 rounded-lg 
                         appearance-none 
                         cursor-pointer 
                         dark:bg-gray-400"/>
 
-                <span class="text-sm absolute start-0 -bottom-6">Min ($100)</span>
-                <span class="text-sm absolute end-0 -bottom-6 ">Max ($1500)</span>
+                <span className="text-sm absolute start-0 -bottom-6">Min ($100)</span>
+                <span className="text-sm absolute end-0 -bottom-6 ">Max ($1500)</span>
             </div>
 
             <div className="w-full mt-14 flex flex-row space-x-5 justify-center">
                 <p>¿En cuántos días lo deseas devolver?</p>
-                <p class="text-cyan-500">30 días</p>
+                <p className="text-cyan-500">30 días</p>
             </div>
-            <div class="relative ml-5 mr-5" >
-                <label for="labels-range-input" class="sr-only">Labels range</label>
+            <div className="relative ml-5 mr-5" >
+                <label htmlFor="labels-range-input" className="sr-only">Labels range</label>
 
                 <input
                     id="labels-range-input"
                     type="range"
                     min="100" max="1500"
-                    class="w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-400"/>
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-400"/>
 
-                <span class="text-sm absolute start-0 -bottom-6">5</span>
-                <span class="text-sm absolute end-0 -bottom-6">45</span>
+                <span className="text-sm absolute start-0 -bottom-6">5</span>
+                <span className="text-sm absolute end-0 -bottom-6">45</span>
             </div>
 
             <div className="mt-10">
-                <hr class="my-6 dark:border-cyan-800 lg:my-8" />
+                <hr className="my-6 dark:border-cyan-800 lg:my-8" />
             </div>
 
             <div className="mb-3">
