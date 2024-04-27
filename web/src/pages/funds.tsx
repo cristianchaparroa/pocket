@@ -1,6 +1,6 @@
 
 
-const Funds = () => {
+const FundsPage = () => {
     
     return (
         <div>
@@ -26,4 +26,4 @@ const Funds = () => {
     );
 }
 
-export default Funds;
+export default FundsPage;

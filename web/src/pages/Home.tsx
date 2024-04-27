@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
+
 import pocketHomeImage from '/home-image.png';
 import { CustomRedirectButton } from '../components/CustomRedirectButton';
+import { useAccount } from 'wagmi'
+import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const HomePage = () => {
+    const navigate = useNavigate();
+    const {isConnected } = useAccount()
+
+    useEffect( () => {
+        if (isConnected) {
+            navigate("/kids")
+        }
+    })
 
     return (
         <div>
@@ -21,10 +33,7 @@ const Home = () => {
                     p-3
                     text-white
                     "
-                >
-                    {
-                        // TODO: make the custom redirect button receive properties to custom the style 
-                    }
+                > 
                     <CustomRedirectButton/>
                 </div>
             </div> 
@@ -32,4 +41,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default HomePage;

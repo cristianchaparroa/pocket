@@ -21,13 +21,6 @@ export const CustomRedirectButton = () => {
           chain &&
           (!authenticationStatus ||
             authenticationStatus === 'authenticated');
-
-        // Define the custom function to handle the connect action
-        const handleConnectWallet = () => {
-            alert("Wrap function");
-            //openConnectModal(); 
-        }
-
         return (
           <div
             {...(!ready && {
@@ -42,7 +35,7 @@ export const CustomRedirectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={handleConnectWallet} type="button">
+                  <button onClick={openConnectModal} type="button">
                     Connect Wallet
                   </button>
                 );

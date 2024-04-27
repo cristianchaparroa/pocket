@@ -5,7 +5,12 @@ import { WagmiProvider } from 'wagmi';
 import {scrollSepolia} from 'wagmi/chains';
 import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
 
-import Home from './pages/Home';
+import HomePage from './pages/Home';
+import FundsPage from './pages/Funds';
+import KidsPage from './pages/Kids'; 
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 const queryClient = new QueryClient();
 
@@ -16,12 +21,29 @@ const config = getDefaultConfig({
     ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <HomePage />,
+    },
+    {
+        path: '/kids',
+        element: <KidsPage />,
+    },
+    {
+        path: '/funds',
+        element:<FundsPage />
+    }
+
+]);
 const App = () => {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>
-                    <Home/> 
+                   <RouterProvider router={router}>
+                        {/* Your application routes and components */}
+                    </RouterProvider> 
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>
