@@ -4,8 +4,8 @@ import {getDefaultConfig, RainbowKitProvider} from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import {scrollSepolia} from 'wagmi/chains';
 import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
+import Home from './pages/Home';
 
 const queryClient = new QueryClient();
 
@@ -21,16 +21,7 @@ const App = () => {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>
-                    Pocket !!
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                            padding: 12,
-                        }}
-                    >
-                        <ConnectButton/>
-                    </div>
+                    <Home/> 
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>
