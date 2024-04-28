@@ -7,7 +7,7 @@ import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
 
 import HomePage  from './pages/Home';
 import KidsPage  from './pages/Kids'; 
-import FundsPage from './pages/FundsPage';
+import FundsPage from './pages/Funds';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
