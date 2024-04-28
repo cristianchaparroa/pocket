@@ -22,8 +22,8 @@ const Navbar: React.FC<NavbarProps> = (props:NavbarProps) => {
               <div className="ml-10 flex items-baseline space-x-4">
                 {/* Navigation Links */}
                 {
-                    props.links?.map( (link) => (
-                        <a href={link.href} className="px-3 py-2 rounded-md text-sm font-medium">
+                    props.links?.map( (link, index) => (
+                        <a key={index} href={link.href} className="px-3 py-2 rounded-md text-sm font-medium">
                             {link.text}
                         </a>
                     ))
@@ -61,8 +61,8 @@ const Navbar: React.FC<NavbarProps> = (props:NavbarProps) => {
         <div className="md:hidden" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {
-                    props.links?.map( (link) => (
-                        <a href={link.href} className="block px-3 py-2 rounded-md text-base font-medium">
+                    props.links?.map( (link, index) => (
+                        <a key={index} href={link.href} className="block px-3 py-2 rounded-md text-base font-medium">
                             {link.text}
                         </a>
                     ))
