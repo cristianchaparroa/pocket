@@ -14,8 +14,8 @@ const KidsPage = () => {
             <Navbar {...menuProps} />
             <div className="flex flex-col justify-center items-center">
                 {
-                    kids.map( (kid) => (
-                        <div className="flex flex-row max-w-xl p-5">
+                    kids.map( (kid, index) => (
+                        <div key={index} className="flex flex-row max-w-xl p-5">
                             <img className="w-8 h-8 mr-5" src={defaultIcon} />
                             {kid.name} - {kid.ammount} 
                         </div>
