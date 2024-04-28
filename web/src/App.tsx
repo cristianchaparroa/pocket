@@ -7,7 +7,7 @@ import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
 
 import HomePage  from './pages/Home';
 import KidsPage  from './pages/Kids'; 
-import FundsPage from './pages/Funds';
+import FundsPage from './pages/FundsPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
         path: '/funds',
         element:  <FundsPage />
     }
-
 ]);
+
 const App = () => {
     return (
         <WagmiProvider config={config}>
