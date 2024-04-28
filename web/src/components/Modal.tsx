@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         >
             <div className="bg-white p-4 rounded-lg shadow-lg max-w-md">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="font-bold">{title}</h2>
+                    <h2 className="font-bold text-center">{title}</h2>
                     <button
                         className="p-2 hover:bg-red-500 focus:outline-none"
                         onClick={handleClose}
