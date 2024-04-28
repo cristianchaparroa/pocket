@@ -1,9 +1,11 @@
-
+import Navbar from "../components/Navbar";
+import { menuProps } from "./constants";
 
 const FundsPage = () => {
     
     return (
         <div>
+            <Navbar{...menuProps} />             
             <button 
                 type="button" 
                 className="

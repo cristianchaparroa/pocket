@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import pocketHomeImage from '/home-image.png';
-import { CustomRedirectButton } from '../components/CustomRedirectButton';
+import { CustomButton } from '../components/CustomButton';
 import { useAccount } from 'wagmi'
 import { useNavigate } from 'react-router-dom';
 
@@ -34,7 +34,7 @@ const HomePage = () => {
                     text-white
                     "
                 > 
-                    <CustomRedirectButton/>
+                    <CustomButton/>
                 </div>
             </div> 
         </div>
