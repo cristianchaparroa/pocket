@@ -17,3 +17,8 @@ verify:
 		 --verifier-url https://api-sepolia.scrollscan.com/api \
 		 --etherscan-api-key $(ETHERSCAN_API_KEY)
 .PHONY:
+
+# make contract=Pocket abi
+abi:
+	jq .abi 'out/$(contract).sol/$(contract).json' > 'web/src/generated/$(contract).abi.json'
+.PHONY:
