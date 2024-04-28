@@ -4,7 +4,12 @@ import {getDefaultConfig, RainbowKitProvider} from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import {scrollSepolia} from 'wagmi/chains';
 import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+import HomePage  from './pages/Home';
+import KidsPage  from './pages/Kids'; 
+import FundsPage from './pages/Funds';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 const queryClient = new QueryClient();
@@ -16,21 +21,29 @@ const config = getDefaultConfig({
     ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <HomePage />,
+    },
+    {
+        path: '/kids',
+        element: <KidsPage />,
+    },
+    {
+        path: '/funds',
+        element:  <FundsPage />
+    }
+]);
+
 const App = () => {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>
-                    Pocket !!
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'flex-end',
-                            padding: 12,
-                        }}
-                    >
-                        <ConnectButton/>
-                    </div>
+                   <RouterProvider router={router}>
+                        {/* Your application routes and components */}
+                    </RouterProvider> 
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>
