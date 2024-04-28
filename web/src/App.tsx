@@ -5,9 +5,9 @@ import { WagmiProvider } from 'wagmi';
 import {scrollSepolia} from 'wagmi/chains';
 import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
 
-import HomePage from './pages/Home';
+import HomePage  from './pages/Home';
+import KidsPage  from './pages/Kids'; 
 import FundsPage from './pages/Funds';
-import KidsPage from './pages/Kids'; 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/funds',
-        element:<FundsPage />
+        element:  <FundsPage />
     }
 
 ]);
