@@ -2,7 +2,7 @@
 export const menuProps = {
     title: 'Menu',
     links:[
-            { href:"/", text: "Home"},
+            { href:"/", text: "Kids"},
             { href:"/funds", text: "Funds"}
     ]
 };

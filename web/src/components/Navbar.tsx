@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   title?: string;
@@ -23,9 +24,9 @@ const Navbar: React.FC<NavbarProps> = (props:NavbarProps) => {
                 {/* Navigation Links */}
                 {
                     props.links?.map( (link, index) => (
-                        <a key={index} href={link.href} className="px-3 py-2 rounded-md text-sm font-medium">
-                            {link.text}
-                        </a>
+                            <Link key={index} to={link.href} className="px-3 py-2 rounded-md text-sm font-medium">
+                                {link.text}
+                            </Link>
                     ))
                 }
               </div>
@@ -61,10 +62,10 @@ const Navbar: React.FC<NavbarProps> = (props:NavbarProps) => {
         <div className="md:hidden" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {
-                    props.links?.map( (link, index) => (
-                        <a key={index} href={link.href} className="block px-3 py-2 rounded-md text-base font-medium">
-                            {link.text}
-                        </a>
+                    props.links?.map( (link, index) => ( 
+                            <Link key={index}  to={link.href} className="block px-3 py-2 rounded-md text-base font-medium">
+                                {link.text}
+                            </Link>
                     ))
                 }
 
