@@ -2,8 +2,8 @@
 export const menuProps = {
     title: 'Menu',
     links:[
-            { href:"/", text: "Kids"},
-            { href:"/funds", text: "Funds"}
+            { href:"/parents/", text: "Kids"},
+            { href:"/parents/funds", text: "Funds"}
     ]
 };
 

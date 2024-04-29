@@ -4,7 +4,6 @@ import pocketContractABI from '../../generated/Pocket.abi.json';
 import {scrollSepolia} from "viem/chains";
 import {KidType} from "../../models/Kid.ts";
 
-const ContractAddress = '0xcd969f53BfA5Ea1a49A47d9C870767d5eD56BB0B' as `0x($string)`;
 class PocketService {
     private contract: any;
     private readonly walletClient: any;
@@ -19,7 +18,7 @@ class PocketService {
         });
 
         this.contract = getContract({
-            address: '0xcd969f53BfA5Ea1a49A47d9C870767d5eD56BB0B',
+            address: '0xF1750B123b54Dba0e1850EE8a39a6dBaA3469584',
             abi: pocketContractABI,
             client: {
                 public: publicClient,

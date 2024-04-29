@@ -14,15 +14,15 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/parents/',
         element: <HomePage />,
     },
     {
-        path: '/kids',
+        path: '/parents/kids',
         element: <KidsPage />,
     },
     {
-        path: '/funds',
+        path: '/parents/funds',
         element:  <FundsPage />
     }
 ]);
