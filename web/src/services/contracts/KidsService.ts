@@ -1,4 +1,4 @@
-import {createWalletClient, custom, getContract} from "viem";
+import {createWalletClient, custom, getContract, parseEther} from "viem";
 import {scrollSepolia} from "viem/chains";
 import pocketContractABI from "../../generated/Pocket.abi.json";
 import {publicClient} from "./client.ts";
@@ -33,8 +33,8 @@ class KidsService {
         return await this.contract.read.getKidByPhoneNumber([address, phoneNumber]);
     }
 
-    transfer = async (address:string, phone:string) => {
-        return await this.contract.read.transferBetweenKids(address, phone);
+    transfer = async (address:string, phone:string, amount: string) => {
+        return await this.contract.read.transferBetweenKids([address, phone, parseEther(amount)]);
     }
 
 
