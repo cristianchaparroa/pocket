@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import KidsService from "../../services/contracts/KidsService.ts";
 import {useEffect, useState} from "react";
-import {KidType} from "../../models/Kid.ts";
 import {formatEther} from "viem";
 
 const KidsDashboard = () => {
