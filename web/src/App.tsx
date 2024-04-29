@@ -11,6 +11,8 @@ import HomePage from './pages/Home';
 import ParentsHomePage  from './pages/parents/Home.tsx';
 import ParentsKidsPage  from './pages/parents/Kids.tsx';
 import ParentsFundsPage from './pages/parents/Funds.tsx';
+import KidsHomePage from "./pages/kids/Home.tsx";
+import KidsDashboard from "./pages/kids/Dashboard.tsx";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
     {
         path: '/parents/funds',
         element:  <ParentsFundsPage />
+    },
+    {
+        path: '/kids',
+        element: <KidsHomePage/>,
+    },
+    {
+        path:'/kids/dashboard',
+        element: <KidsDashboard/>,
     }
 ]);
 

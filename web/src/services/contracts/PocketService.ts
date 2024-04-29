@@ -3,6 +3,7 @@ import {publicClient} from './client'
 import pocketContractABI from '../../generated/Pocket.abi.json';
 import {scrollSepolia} from "viem/chains";
 import {KidType} from "../../models/Kid.ts";
+import {POCKET_CONTRACT_ADDRESS} from "./constants.ts";
 
 class PocketService {
     private contract: any;
@@ -18,7 +19,7 @@ class PocketService {
         });
 
         this.contract = getContract({
-            address: '0xF1750B123b54Dba0e1850EE8a39a6dBaA3469584',
+            address: POCKET_CONTRACT_ADDRESS,
             abi: pocketContractABI,
             client: {
                 public: publicClient,
@@ -59,7 +60,6 @@ class PocketService {
     addKid = async (identifier: string, names: string, phone:string, balance: string) => {
         return await this.contract.write.addKid([identifier, names, phone, parseEther(balance)]);
     }
-
 }
 
 export default PocketService;
