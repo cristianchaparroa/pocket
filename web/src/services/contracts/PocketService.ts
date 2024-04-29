@@ -4,7 +4,6 @@ import pocketContractABI from '../../generated/Pocket.abi.json';
 import {scrollSepolia} from "viem/chains";
 import {KidType} from "../../models/Kid.ts";
 
-const ContractAddress = '0xcd969f53BfA5Ea1a49A47d9C870767d5eD56BB0B' as `0x($string)`;
 class PocketService {
     private contract: any;
     private readonly walletClient: any;
@@ -19,7 +18,7 @@ class PocketService {
         });
 
         this.contract = getContract({
-            address: '0xcd969f53BfA5Ea1a49A47d9C870767d5eD56BB0B',
+            address: '0xF1750B123b54Dba0e1850EE8a39a6dBaA3469584',
             abi: pocketContractABI,
             client: {
                 public: publicClient,
@@ -47,14 +46,18 @@ class PocketService {
      * Get kids associated to the parent
      * */
     getKids = async (): Promise<KidType[]> => {
-        return await this.contract.read.getKids([this.accountAddress]);
+        const kids = await this.contract.read.getKids([this.accountAddress]);
+        return kids.map( (k) => {
+            k.allocatedFunds = formatEther(k.allocatedFunds)
+            return k
+        })
     }
 
     /**
      * Add a new kid associated to parent wallet
      * */
-    addKid = async (identifier: string, names: string) => {
-        return await this.contract.write.addKid([identifier, names]);
+    addKid = async (identifier: string, names: string, phone:string, balance: string) => {
+        return await this.contract.write.addKid([identifier, names, phone, parseEther(balance)]);
     }
 
 }
