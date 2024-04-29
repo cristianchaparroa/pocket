@@ -46,14 +46,19 @@ class PocketService {
      * Get kids associated to the parent
      * */
     getKids = async (): Promise<KidType[]> => {
-        return await this.contract.read.getKids([this.accountAddress]);
+        const kids = await this.contract.read.getKids([this.accountAddress]);
+        return kids.map( (k) => {
+            const balance = formatEther(k.allocatedFunds);
+            k.allocatedFunds = balance
+            return k
+        })
     }
 
     /**
      * Add a new kid associated to parent wallet
      * */
-    addKid = async (identifier: string, names: string) => {
-        return await this.contract.write.addKid([identifier, names]);
+    addKid = async (identifier: string, names: string, phone:string, balance: string) => {
+        return await this.contract.write.addKid([identifier, names, phone, parseEther(balance)]);
     }
 
 }

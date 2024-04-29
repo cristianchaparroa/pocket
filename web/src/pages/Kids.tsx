@@ -9,6 +9,7 @@ import {KidType} from '../models/Kid';
 import PocketService from "../services/contracts/PocketService.ts";
 import Modal from "../components/Modal.tsx";
 import {Link} from "react-router-dom";
+import {formatEther} from "viem";
 
 const KidsPage = () => {
     /** Wallet account logged */
@@ -20,6 +21,9 @@ const KidsPage = () => {
     const [kids, setKids] = useState<KidType[]>([]);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [names, setNames] = useState("");
+    const [phone, setPhone] = useState("");
+    const [kidBalance, setKidBalance] = useState("");
+
     const [hashTransaction, setHashTransaction] = useState("");
 
     useEffect(() => {
@@ -43,12 +47,18 @@ const KidsPage = () => {
         setNames(event.target.value);
     }
 
+    const changePhone = (event) => {
+        setPhone(event.target.value);
+    }
+
+    const changeKidBalance = (event) => {
+        setKidBalance(event.target.value);
+    }
+
     const handleAddKid = () => {
         const identifier = uuidv4();
-
-        pocketService.addKid(identifier, names).then( hash => {
+        pocketService.addKid(identifier, names, phone, kidBalance).then( hash => {
            setHashTransaction(hash);
-           console.error(hash);
         });
     }
 
@@ -82,14 +92,11 @@ const KidsPage = () => {
                 )}
 
                 {kids.length > 0 ? (
-
                         kids.map((kid, index) => (
-                            <div>
                                 <div key={index} className="flex flex-row max-w-xl p-5">
                                     <img className="w-8 h-8 mr-5" src={defaultIcon}/>
-                                    {kid.identifier} - {kid.names}
+                                     {kid.names} - {kid.phoneNumber} - {kid.allocatedFunds}
                                 </div>
-                            </div>
                         ))
                     ) :
                     <div className="w-auto bg-cyan-100 min-h-10">
@@ -108,6 +115,38 @@ const KidsPage = () => {
                             type="text"
                             onChange={changeName}
                             placeholder="name of your kid"
+                            className="
+                                w-full
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3 py-2
+                                text-gray-700
+                                focus:outline-none
+                                focus:ring-1
+                                focus:ring-blue-500"
+                        />
+
+                        <input
+                            type="text"
+                            onChange={changePhone}
+                            placeholder="phone of the kid"
+                            className="
+                                w-full
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3 py-2
+                                text-gray-700
+                                focus:outline-none
+                                focus:ring-1
+                                focus:ring-blue-500"
+                        />
+
+                        <input
+                            type="text"
+                            onChange={changeKidBalance}
+                            placeholder="allocated balance"
                             className="
                                 w-full
                                 rounded-md
@@ -147,7 +186,8 @@ const KidsPage = () => {
 
                         {hashTransaction && (
                             <div>
-                                <Link className="custom-link"  to={`https://sepolia.scrollscan.dev/tx/${hashTransaction}`}>
+                                <Link className="custom-link"
+                                      to={`https://sepolia.scrollscan.dev/tx/${hashTransaction}`}>
                                     Transaction successfully (click here)
                                 </Link>
                             </div>

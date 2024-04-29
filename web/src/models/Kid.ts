@@ -1,6 +1,8 @@
 
 export interface KidType {
     identifier: string;
+    parent:string;
     names: string;
-    amount: string;
+    allocatedFunds: string;
+    phoneNumber:string,
 }
