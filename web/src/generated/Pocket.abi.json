@@ -74,6 +74,57 @@
   },
   {
     "type": "function",
+    "name": "getKidByPhoneNumber",
+    "inputs": [
+      {
+        "name": "parentAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "phoneNumber",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct Pocket.Kid",
+        "components": [
+          {
+            "name": "parent",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "identifier",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "names",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "phoneNumber",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "allocatedFunds",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "getKids",
     "inputs": [
       {

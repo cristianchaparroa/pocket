@@ -21,9 +21,7 @@ const KidsHomePage = () => {
 
     const handleConnect = () => {
         kidsService.getParentAddress(phoneNumber).then(address => {
-            console.error(address);
-            setIsConnected(true);
-            navigate("/kids/dashboard");
+            navigate("/kids/dashboard", { state: { parentAddress: address, phoneNumber: phoneNumber } });
         }).catch( e => {
             setIsConnected(false);
             setIsModalOpen(true);

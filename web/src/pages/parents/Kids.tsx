@@ -95,7 +95,7 @@ const KidsPage = () => {
                         kids.map((kid, index) => (
                                 <div key={index} className="flex flex-row max-w-xl p-5">
                                     <img className="w-8 h-8 mr-5" src={defaultIcon}/>
-                                     {kid.names} - {kid.phoneNumber} - {kid.allocatedFunds}
+                                     {kid.names} - {kid.phoneNumber} - {kid.allocatedFunds} ETH
                                 </div>
                         ))
                     ) :

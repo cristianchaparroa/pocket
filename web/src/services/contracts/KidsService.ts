@@ -29,6 +29,14 @@ class KidsService {
         return await this.contract.read.getParentAddress([phoneNumber]);
     }
 
+    getKid = async (address:string, phoneNumber:string) => {
+        return await this.contract.read.getKidByPhoneNumber([address, phoneNumber]);
+    }
+
+    transfer = async (address:string, phone:string) => {
+        return await this.contract.read.transferBetweenKids(address, phone);
+    }
+
 
 }
 
