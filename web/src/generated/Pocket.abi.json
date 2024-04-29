@@ -7,6 +7,11 @@
         "name": "identifier",
         "type": "string",
         "internalType": "string"
+      },
+      {
+        "name": "names",
+        "type": "string",
+        "internalType": "string"
       }
     ],
     "outputs": [],
@@ -80,6 +85,11 @@
           },
           {
             "name": "identifier",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "names",
             "type": "string",
             "internalType": "string"
           }

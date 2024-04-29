@@ -7,6 +7,7 @@ contract Pocket {
     struct Kid {
         address parent; // pointer to the parent
         string identifier; // individual kid identifier
+        string names;
     }
 
     // Mapping from parent address to the funds available
@@ -36,11 +37,12 @@ contract Pocket {
     }
 
     // Function to add a Kid to the parent's list
-    function addKid(string memory identifier) public {
+    function addKid(string memory identifier, string memory names) public {
         require(bytes(identifier).length > 0, "Invalid kid identifier");
         Kid memory newKid = Kid({
             parent: msg.sender,
-            identifier: identifier
+            identifier: identifier,
+            names: names
         });
         kids[msg.sender].push(newKid);
         emit KidAdded(msg.sender, identifier);
