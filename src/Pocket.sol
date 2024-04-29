@@ -98,6 +98,19 @@ contract Pocket {
         return parentAddress;
     }
 
+    function getKidByPhoneNumber(address parentAddress, string memory phoneNumber) public view returns (Kid memory) {
+        require(funds[parentAddress] > 0, "Parent address does not exist"); // Validate parent exists
+
+        Kid[] storage kids = kids[parentAddress];
+        for (uint i = 0; i < kids.length; i++) {
+            if (keccak256(bytes(kids[i].phoneNumber)) == keccak256(bytes(phoneNumber))) {
+                return kids[i];
+            }
+        }
+        // If no kid found, emit an error
+        revert("Kid with provided phone number not found");
+    }
+
     // Function to transfer funds between kids using their phone numbers, with additional validations
     function transferBetweenKids(
         string memory fromPhoneNumber,

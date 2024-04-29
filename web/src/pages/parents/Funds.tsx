@@ -52,7 +52,7 @@ const FundsPage = () => {
         pocketService.getBalance().then( (value) => {
             setKidsFunds(value);
         });
-    }, []); // Dependency array
+    }, [kidsFunds]); // Dependency array
 
     return (
         <div>
