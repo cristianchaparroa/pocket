@@ -1,10 +1,10 @@
 import './Funds.css';
 import { Link } from 'react-router-dom';
-import Navbar from "../components/Navbar";
-import { menuProps } from "./constants";
+import Navbar from "../../components/Navbar";
+import { menuProps } from "../constants";
 import {useEffect, useState} from "react";
-import Modal from "../components/Modal.tsx";
-import PocketService from "../services/contracts/PocketService.ts";
+import Modal from "../../components/Modal.tsx";
+import PocketService from "../../services/contracts/PocketService.ts";
 import {useAccount} from "wagmi";
 
 const FundsPage = () => {

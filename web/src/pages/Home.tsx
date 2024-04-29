@@ -1,42 +1,56 @@
-import { useEffect } from 'react';
-
 import pocketHomeImage from '/home-image.png';
-import { CustomButton } from '../components/CustomButton';
-import { useAccount } from 'wagmi'
-import { useNavigate } from 'react-router-dom';
+import {Link} from "react-router-dom";
+
 
 const HomePage = () => {
-    const navigate = useNavigate();
-    const {isConnected } = useAccount()
-
-    useEffect( () => {
-        if (isConnected) {
-            navigate("/parents/kids")
-        }
-    })
-
     return (
         <div>
             <div className="mt-20 flex space-x-4 flex-row justify-center items-center">
-                <img className="w-72" src={pocketHomeImage} alt="Home logo" />
+                <img className="w-72" src={pocketHomeImage} alt="Home logo"/>
             </div>
 
-            <div className="flex-column space-y-5">
-                <h1 className="text-3xl pt-20">Pocket</h1>
-                <h2 className="text-slate-700">for parents</h2>
-            </div>
-
-            <div className="mt-10 w-auto h-auto flex space-x-4 flex-row justify-center items-center">
-                <div className="
+            <button
+                type="button"
+                className="
                     w-full
-                    bg-violet-800
-                    p-3
+                    focus:outline-none
                     text-white
-                    "
-                >
-                    <CustomButton/>
-                </div>
-            </div>
+                    bg-purple-700
+                    hover:bg-purple-800
+                    font-medium
+                    rounded-lg
+                    text-sm
+                    px-5
+                    py-2.5
+                    mt-10
+                    mb-6
+                    dark:bg-purple-600
+                    dark:hover:bg-purple-700
+                    dark:focus:ring-purple-900">
+                <a href="/parents/"> For Parents </a>
+            </button>
+
+            <button
+                type="button"
+                className="
+                    w-full
+                    focus:outline-none
+                    text-white
+                    bg-cyan-400
+                    hover:bg-cyan-800
+                    font-medium
+                    rounded-lg
+                    text-sm
+                    px-5
+                    py-2.5
+                    mt-10
+                    mb-6
+                    dark:bg-cyan-600
+                    dark:hover:bg-cyan-700
+                    dark:focus:ring-cyan-900">
+                <a href="/kids/"> For Kids </a>
+            </button>
+
         </div>
     );
 }

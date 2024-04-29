@@ -1,15 +1,15 @@
 import defaultIcon from '/person-circle-icon.png';
-import { menuProps } from './constants';
+import { menuProps } from '../constants';
 import  {useEffect, useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import {useAccount} from "wagmi";
-import Navbar from '../components/Navbar';
-import {KidType} from '../models/Kid';
+import Navbar from '../../components/Navbar';
+import {KidType} from '../../models/Kid';
 
-import PocketService from "../services/contracts/PocketService.ts";
-import Modal from "../components/Modal.tsx";
+import PocketService from "../../services/contracts/PocketService.ts";
+import Modal from "../../components/Modal.tsx";
 import {Link} from "react-router-dom";
-import {formatEther} from "viem";
+
 
 const KidsPage = () => {
     /** Wallet account logged */

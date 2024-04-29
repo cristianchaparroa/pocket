@@ -7,23 +7,28 @@ import { WagmiProvider } from 'wagmi';
 import {QueryClientProvider, QueryClient,} from "@tanstack/react-query";
 import config from "./services/contracts/config.ts";
 
-import HomePage  from './pages/Home';
-import KidsPage  from './pages/Kids';
-import FundsPage from './pages/Funds';
+import HomePage from './pages/Home';
+import ParentsHomePage  from './pages/parents/Home.tsx';
+import ParentsKidsPage  from './pages/parents/Kids.tsx';
+import ParentsFundsPage from './pages/parents/Funds.tsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
     {
+        path: '/',
+        element: <HomePage />
+    },
+    {
         path: '/parents/',
-        element: <HomePage />,
+        element: <ParentsHomePage />,
     },
     {
         path: '/parents/kids',
-        element: <KidsPage />,
+        element: <ParentsKidsPage />,
     },
     {
         path: '/parents/funds',
-        element:  <FundsPage />
+        element:  <ParentsFundsPage />
     }
 ]);
 
