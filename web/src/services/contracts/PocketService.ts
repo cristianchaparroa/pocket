@@ -1,22 +1,23 @@
-import {createWalletClient, custom, getContract, parseEther} from 'viem'
+import {createWalletClient, custom, formatEther, getContract, parseEther} from 'viem'
 import {publicClient} from './client'
 import pocketContractABI from '../../generated/Pocket.abi.json';
 import {scrollSepolia} from "viem/chains";
 
 class PocketService {
-    private static instance: PocketService;
     private contract: any;
     private readonly walletClient: any;
+    private accountAddress:any;
 
-    constructor(account) {
+    constructor(address) {
+        this.accountAddress = address;
         this.walletClient = createWalletClient({
             chain: scrollSepolia,
             transport: custom(window.ethereum!),
-            account: account.address,
+            account: this.accountAddress,
         });
 
         this.contract = getContract({
-            address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+            address: '0x1D89Fc691D317F273Ce3DA13265e186BFae21571',
             abi: pocketContractABI,
             client: {
                 public: publicClient,
@@ -35,8 +36,9 @@ class PocketService {
     /**
      * Get funds retrieves the amount send to contract by the parent
      * */
-    getFunds = async () => {
-        return await this.contract.read.getFund([]);
+    getBalance = async ():Promise<string> => {
+        const balance = await this.contract.read.getBalance([this.accountAddress]);
+        return formatEther(balance);
     }
 }
 
