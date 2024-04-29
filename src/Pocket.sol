@@ -82,6 +82,17 @@ contract Pocket {
         }
     }
 
+    // Function to get the list of Kids for a parent
+    function getKids(address parent) public view returns (Kid[] memory) {
+        return kids[parent];
+    }
+
+    // GetBalance function to view the total funds of a parent
+    function getBalance(address addr) public view returns (uint256) {
+        return funds[addr];
+    }
+
+
     // Function to transfer funds between kids using their phone numbers, with additional validations
     function transferBetweenKids(
         string memory fromPhoneNumber,
