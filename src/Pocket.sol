@@ -121,25 +121,39 @@ contract Pocket {
         address toParent = phoneToParent[toPhoneNumber];
         require(fromParent != address(0), "Invalid from phone number");
         require(toParent != address(0), "Invalid to phone number");
-        require(fromParent != toParent, "Cannot transfer to self");
 
-        // Additional validations:
-        require(funds[fromParent] >= amount, "Insufficient funds in from kid's account");
+        // Only allow transfer between same parent if phone numbers differ
+        require(fromParent == toParent || keccak256(bytes(fromPhoneNumber)) != keccak256(bytes(toPhoneNumber)),
+            "Transfer between same parent only allowed for different phone numbers");
 
-        // Check if the amount exceeds the allocated funds of the "from" kid
+
         Kid[] storage fromKids = kids[fromParent];
-        bool foundFromKid = false;
+        Kid[] storage toKids = kids[toParent];
+
+        int fromKidIndex = -1;
+        int toKidIndex = -1;
+
+        // Find indexes of the kids
         for (uint i = 0; i < fromKids.length; i++) {
             if (keccak256(bytes(fromKids[i].phoneNumber)) == keccak256(bytes(fromPhoneNumber))) {
-                require(fromKids[i].allocatedFunds >= amount, "Transfer exceeds allocated funds");
-                foundFromKid = true;
-                break;
+                fromKidIndex = int(i);
+            }
+            if (keccak256(bytes(toKids[i].phoneNumber)) == keccak256(bytes(toPhoneNumber))) {
+                toKidIndex = int(i);
             }
         }
-        require(foundFromKid, "Kid not found in from parent's list");
 
-        funds[fromParent] -= amount;
-        funds[toParent] += amount;
+        require(fromKidIndex != -1 && toKidIndex != -1, "Kid not found");
+        require(fromKids[uint(fromKidIndex)].allocatedFunds >= amount, "Insufficient funds in from kid's account");
+
+        // Update the allocated funds for both kids
+        fromKids[uint(fromKidIndex)].allocatedFunds -= amount;
+        toKids[uint(toKidIndex)].allocatedFunds += amount;
+
+        if (fromParent != toParent) {
+            funds[fromParent] -= amount;
+            funds[toParent] += amount;
+        }
 
         emit TransferBetweenKids(fromParent, toParent, amount);
     }
