@@ -48,8 +48,7 @@ class PocketService {
     getKids = async (): Promise<KidType[]> => {
         const kids = await this.contract.read.getKids([this.accountAddress]);
         return kids.map( (k) => {
-            const balance = formatEther(k.allocatedFunds);
-            k.allocatedFunds = balance
+            k.allocatedFunds = formatEther(k.allocatedFunds)
             return k
         })
     }
