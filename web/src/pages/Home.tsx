@@ -1,8 +1,17 @@
 import pocketHomeImage from '/home-image.png';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 const HomePage = () => {
+    const navigate = useNavigate();
+    const onClickParents = () => {
+         navigate("/parents/")
+    }
+
+    const onClickKids = () => {
+        navigate("/kids/")
+    }
+
     return (
         <div>
             <div className="mt-20 flex space-x-4 flex-row justify-center items-center">
@@ -10,6 +19,7 @@ const HomePage = () => {
             </div>
 
             <button
+                onClick={onClickParents}
                 type="button"
                 className="
                     w-full
@@ -27,10 +37,11 @@ const HomePage = () => {
                     dark:bg-purple-600
                     dark:hover:bg-purple-700
                     dark:focus:ring-purple-900">
-                <a href="/parents/"> For Parents </a>
+                For Parents
             </button>
 
             <button
+                onClick={onClickKids}
                 type="button"
                 className="
                     w-full
@@ -48,7 +59,7 @@ const HomePage = () => {
                     dark:bg-cyan-600
                     dark:hover:bg-cyan-700
                     dark:focus:ring-cyan-900">
-                <a href="/kids/"> For Kids </a>
+                For Kids
             </button>
 
         </div>
