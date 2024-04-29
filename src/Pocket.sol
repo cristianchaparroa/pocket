@@ -92,6 +92,11 @@ contract Pocket {
         return funds[addr];
     }
 
+    function getParentAddress(string memory phoneNumber) public view returns (address) {
+        address parentAddress = phoneToParent[phoneNumber];
+        require(parentAddress != address(0), "Doesnt exist phone number");
+        return parentAddress;
+    }
 
     // Function to transfer funds between kids using their phone numbers, with additional validations
     function transferBetweenKids(
